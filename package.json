@@ -1,0 +1,31 @@
+{
+	"name": "dhlottery-auto",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"check": "biome check --write",
+		"check:unsafe": "biome check --unsafe --write",
+		"build": "swc src -d dist",
+		"dev": "swc src/index.ts -o dist/index.js && node dist/index.js",
+		"start": "node dist/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.14.0",
+	"devDependencies": {
+		"@biomejs/biome": "2.2.0",
+		"@swc/cli": "^0.7.8",
+		"@swc/core": "^1.13.3",
+		"@types/node": "^24.3.0",
+		"typescript": "^5.9.2"
+	},
+	"dependencies": {
+		"dotenv": "^17.2.1",
+		"playwright": "^1.54.2"
+	}
+}
