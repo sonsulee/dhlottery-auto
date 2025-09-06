@@ -54,3 +54,6 @@ playwright/.cache/
 
 # History
 .history/
+
+# IDE
+.idea
