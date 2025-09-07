@@ -1,44 +1,44 @@
 {
-  "name": "dhlottery-auto",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "format": "biome format --write",
-    "format:check": "biome format",
-    "lint": "biome lint --write",
-    "lint:check": "biome lint",
-    "check": "biome check --write",
-    "check:ci": "biome check",
-    "check:unsafe": "biome check --unsafe --write",
-    "ci": "pnpm run format:check && pnpm run lint:check && pnpm run build",
-    "pre-commit": "pnpm run format:check && pnpm run lint:check",
-    "build": "swc src -d dist",
-    "dev": "swc src/index.ts -o dist/index.js && node dist/index.js",
-    "start": "node dist/index.js",
-    "prepare": "husky"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.14.0",
-  "devDependencies": {
-    "@biomejs/biome": "2.2.0",
-    "@swc/cli": "^0.7.8",
-    "@swc/core": "^1.13.3",
-    "@types/node": "^24.3.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.10",
-    "typescript": "^5.9.2"
-  },
-  "dependencies": {
-    "dotenv": "^17.2.1",
-    "playwright": "^1.54.2"
-  },
-  "lint-staged": {
-    "*.{ts,js}": [
-      "biome check --write"
-    ]
-  }
+	"name": "dhlottery-auto",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"format": "biome format --write",
+		"format:check": "biome format",
+		"lint": "biome lint --write",
+		"lint:check": "biome lint",
+		"check": "biome check --write",
+		"check:ci": "biome check",
+		"check:unsafe": "biome check --unsafe --write",
+		"ci": "pnpm run format:check && pnpm run lint:check && pnpm run build",
+		"pre-commit": "pnpm run format:check && pnpm run lint:check",
+		"build": "swc src -d dist",
+		"dev": "swc src/index.ts -o dist/index.js && node dist/index.js",
+		"start": "node dist/src/index.js",
+		"prepare": "husky"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.14.0",
+	"devDependencies": {
+		"@biomejs/biome": "2.2.0",
+		"@swc/cli": "^0.7.8",
+		"@swc/core": "^1.13.3",
+		"@types/node": "^24.3.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.10",
+		"typescript": "^5.9.2"
+	},
+	"dependencies": {
+		"dotenv": "^17.2.1",
+		"playwright": "^1.54.2"
+	},
+	"lint-staged": {
+		"*.{ts,js}": [
+			"biome check --write"
+		]
+	}
 }
