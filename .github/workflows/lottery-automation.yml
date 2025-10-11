@@ -3,35 +3,35 @@ name: DH Lottery Automation
 on:
   schedule:
     # Every Sunday at 10 AM KST (1 AM UTC)
-    - cron: '0 1 * * 0'
+    - cron: "0 1 * * 0"
   workflow_dispatch: # Manual execution
 
 jobs:
   run-lottery:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+          node-version: "22"
+
+      - name: Setup yarn
+        uses: threeal/setup-yarn-action@v2.0.0
         with:
-          version: 10.14.0
-          
+          version: 4.10.3
+
       - name: Install dependencies
-        run: pnpm install
-        
+        run: yarn install
+
       - name: Build project
-        run: pnpm run build
-        
+        run: yarn build
+
       - name: Run lottery automation
-        run: pnpm start
+        run: yarn start
         env:
           DHLOTTERY_ID: ${{ secrets.DHLOTTERY_ID }}
           DHLOTTERY_PASSWORD: ${{ secrets.DHLOTTERY_PASSWORD }}
