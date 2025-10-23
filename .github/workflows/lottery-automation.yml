@@ -2,8 +2,8 @@ name: DH Lottery Automation
 
 on:
   schedule:
-    # Every Sunday at 10 AM KST (1 AM UTC)
-    - cron: "0 1 * * 0"
+    # Every Thursday at 12:07 PM KST (3:07 AM UTC) - avoid peak load times
+    - cron: "7 3 * * 4"
   workflow_dispatch: # Manual execution
 
 jobs:
