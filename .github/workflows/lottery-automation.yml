@@ -9,6 +9,7 @@ on:
 jobs:
   run-lottery:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout code
@@ -23,18 +24,32 @@ jobs:
         uses: threeal/setup-yarn-action@v2.0.0
         with:
           version: 4.10.3
+          cache: true
 
       - name: Install dependencies
         run: yarn install
 
       - name: Install Playwright browsers
-        run: yarn playwright install chromium
+        run: yarn playwright install chromium --with-deps
 
       - name: Build project
         run: yarn build
 
       - name: Run lottery automation
         run: yarn start
+        timeout-minutes: 10
         env:
           DHLOTTERY_ID: ${{ secrets.DHLOTTERY_ID }}
           DHLOTTERY_PASSWORD: ${{ secrets.DHLOTTERY_PASSWORD }}
+
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-logs-${{ github.run_id }}
+          path: |
+            screenshots/
+            videos/
+            *.log
+          retention-days: 7
+          if-no-files-found: ignore
