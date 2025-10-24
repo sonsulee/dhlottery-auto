@@ -139,8 +139,11 @@ function validateEnvironmentVariables() {
 		await newPage.close();
 	} catch (error) {
 		console.error(`오류: ${error}`);
+		throw error;
 	} finally {
 		await context.close();
 		await browser.close();
 	}
-})();
+})().catch(() => {
+	process.exit(1);
+});
